@@ -11,7 +11,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <engines>
         <engine name="cordova" version=">=7.1.0"/>
         <engine name="cordova-android" version=">=7.0.0"/>
-        <engine name="cordova-ios" version=">=4.4.0"/>
     </engines>
 
     <js-module name="FirebaseDynamicLinks" src="www/FirebaseDynamicLinks.js">
@@ -53,50 +52,4 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
         <framework src="com.google.firebase:firebase-dynamic-links:$FIREBASE_DYNAMIC_LINKS_VERSION" />
     </platform>
-
-    <platform name="ios">
-        <config-file parent="/*" target="config.xml">
-            <feature name="FirebaseDynamicLinks">
-                <param name="ios-package" value="FirebaseDynamicLinksPlugin" />
-            </feature>
-        </config-file>
-
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-            <array>
-                <dict>
-                    <key>CFBundleTypeRole</key>
-                    <string>Editor</string>
-                    <key>CFBundleURLName</key>
-                    <string>BUNDLE_ID</string>
-                    <key>CFBundleURLSchemes</key>
-                    <array>
-                        <string>$PACKAGE_NAME</string>
-                    </array>
-                </dict>
-            </array>
-        </config-file>
-
-        <config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains">
-            <array>
-                <string>applinks:$APP_DOMAIN</string>
-                <string>applinks:$PAGE_LINK_DOMAIN</string>
-            </array>
-        </config-file>
-
-        <config-file target="*-Release.plist" parent="com.apple.developer.associated-domains">
-            <array>
-                <string>applinks:$APP_DOMAIN</string>
-                <string>applinks:$PAGE_LINK_DOMAIN</string>
-            </array>
-        </config-file>
-
-        <header-file src="src/ios/AppDelegate+FirebaseDynamicLinksPlugin.h" />
-        <source-file src="src/ios/AppDelegate+FirebaseDynamicLinksPlugin.m" />
-        <header-file src="src/ios/FirebaseDynamicLinksPlugin.h" />
-        <source-file src="src/ios/FirebaseDynamicLinksPlugin.m" />
-
-        <framework src="Firebase/Core" type="podspec" spec="~> 5.0"/>
-        <framework src="Firebase/DynamicLinks" type="podspec" spec="~> 5.0"/>
-    </platform>
-
 </plugin>
